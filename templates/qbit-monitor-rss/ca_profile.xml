@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommunityApplications>
+  <Profile>
+    qbit-monitor-rss Docker template for Unraid.
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/qbit-monitor-rss/icon.svg</Icon>
+  <WebPage>https://github.com/wildfirebill-unraid/unraid-configs/tree/main/templates/qbit-monitor-rss</WebPage>
+</CommunityApplications>
