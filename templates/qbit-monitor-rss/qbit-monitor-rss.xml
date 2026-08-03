@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>qbit-monitor-rss</Name>
+  <Repository>ghcr.io/wildfirebill-unraid/qbit-monitor-rss:latest</Repository>
+  <Registry></Registry>
+  <Network>bridge</Network>
+  <MyIP></MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wildfirebill-unraid/unraid-configs</Support>
+  <Project></Project>
+  <Overview></Overview>
+  <Category>Downloaders:Web</Category>
+  <WebUI>http://[IP]:[PORT:8200]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/qbit-monitor-rss/qbit-monitor-rss.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/qbit-monitor-rss/icon.svg</Icon>
+  <ExtraParams></ExtraParams>
+  <PostArgs></PostArgs>
+</Container>
