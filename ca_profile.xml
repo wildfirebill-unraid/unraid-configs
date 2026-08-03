@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommunityApplications>
+  <Profile>
+    Unraid server configurations, Docker templates, and system configs maintained by wildfirebill-unraid.
+    Includes optimized docker templates, network configs, and storage configurations for Unraid servers.
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/icon.svg</Icon>
+  <WebPage>https://github.com/wildfirebill-unraid/unraid-configs</WebPage>
+  <Forum>https://forums.unraid.net/topic/123456-wildfirebill-unraid-configs-support/</Forum>
+  <Discord>https://discord.gg/unraid</Discord>
+</CommunityApplications>

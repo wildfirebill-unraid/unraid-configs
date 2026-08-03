@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>ExampleApp</Name>
+  <Repository>your-dockerhub/example-app:latest</Repository>
+  <Registry>https://hub.docker.com</Registry>
+  <Network>bridge</Network>
+  <MyIP></MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wildfirebill-unraid/unraid-configs</Support>
+  <Project>https://github.com/your-repo/example-app</Project>
+  <Overview>Example Docker application template for Unraid.</Overview>
+  <Category>Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/example-app.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/icon.svg</Icon>
+  <ExtraParams></ExtraParams>
+  <PostArgs></PostArgs>
+</Container>

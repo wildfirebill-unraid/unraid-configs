@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plugin SYSTEM "https://raw.githubusercontent.com/Unraid/unraid-docs/main/plugin.dtd">
+<plugin name="ExamplePlugin" version="1.0.0" author="wildfirebill-unraid">
+  <name>Example Plugin</name>
+  <description>Example plugin wrapper for Unraid Community Applications.</description>
+  <url>https://github.com/wildfirebill-unraid/unraid-configs</url>
+  <website>https://github.com/wildfirebill-unraid/unraid-configs</website>
+  <icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/icon.svg</icon>
+  <category>Tools</category>
+  <min_unraid_version>6.12.0</min_unraid_version>
+  <max_unraid_version></max_unraid_version>
+  <changelog>Initial release</changelog>
+  <build>1</build>
+  <file name="example-plugin.plg" url="https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/plugins/example-plugin.plg"/>
+</plugin>
