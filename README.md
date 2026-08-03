@@ -19,4 +19,3 @@ Docker templates must have TemplateURL pointing to raw GitHub URL:
 https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/your-app.xml
 ```
 
-> **Note:** Custom plugins are maintained in the separate [`unraid-plugins`](https://github.com/wildfirebill-unraid/unraid-plugins) repository.
