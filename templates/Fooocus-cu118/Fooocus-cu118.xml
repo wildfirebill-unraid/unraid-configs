@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Fooocus-cu118</Name>
+  <Description>Open source AI image generator (Fooocus) for CUDA 11.8 in Docker. Free, offline SDXL text-to-image with GPU support. Supports Maxwell and newer NVIDIA GPUs.</Description>
+  <Repository>ghcr.io/wildfirebill-ai/fooocus-cu118:1.0.0-wfb</Repository>
+  <Registry>https://ghcr.io</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wildfirebill-ai/Fooocus-cu118</Support>
+  <Project>https://github.com/wildfirebill-ai/Fooocus-cu118</Project>
+  <Overview>Fooocus is an open-source, offline AI image generator (based on Gradio) that rethinks image generators — prompts and images first, minimal manual tuning. It runs locally on your own NVIDIA GPU with a prebuilt Docker image, so it works on older GPU hardware — including Maxwell and newer cards — that newer images no longer support.
+
+It is offline and private (everything runs on your machine, no cloud needed), free and open source, and includes modern image generation such as inpainting, outpainting, and upscaling. Prompt expansion helps produce better results from simple text, and it requires only 4GB of Nvidia VRAM.
+
+Getting started: install via the Unraid Apps tab, open the web UI, and enter a prompt. The first launch downloads the base model, which can take a while depending on your connection.
+
+Documentation: https://github.com/wildfirebill-ai/Fooocus-cu118</Overview>
+  <Category>Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:7865]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/Fooocus-cu118/Fooocus-cu118.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/Fooocus-cu118/icon.svg</Icon>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>7865</HostPort>
+        <ContainerPort>7865</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/fooocus-cu118</HostDir>
+      <ContainerDir>/content/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Key>NVIDIA_VISIBLE_DEVICES</Key>
+      <Value>all</Value>
+    </Variable>
+    <Variable>
+      <Key>DATADIR</Key>
+      <Value>/content/data</Value>
+    </Variable>
+    <Variable>
+      <Key>config_path</Key>
+      <Value>/content/data/config.txt</Value>
+    </Variable>
+    <Variable>
+      <Key>config_example_path</Key>
+      <Value>/content/data/config_modification_tutorial.txt</Value>
+    </Variable>
+    <Variable>
+      <Key>path_checkpoints</Key>
+      <Value>/content/data/models/checkpoints/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_loras</Key>
+      <Value>/content/data/models/loras/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_embeddings</Key>
+      <Value>/content/data/models/embeddings/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_vae_approx</Key>
+      <Value>/content/data/models/vae_approx/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_upscale_models</Key>
+      <Value>/content/data/models/upscale_models/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_inpaint</Key>
+      <Value>/content/data/models/inpaint/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_controlnet</Key>
+      <Value>/content/data/models/controlnet/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_clip_vision</Key>
+      <Value>/content/data/models/clip_vision/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_fooocus_expansion</Key>
+      <Value>/content/data/models/prompt_expansion/fooocus_expansion/</Value>
+    </Variable>
+    <Variable>
+      <Key>path_outputs</Key>
+      <Value>/content/app/outputs/</Value>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <ExtraParams>--gpus all</ExtraParams>
+  <PostArgs></PostArgs>
+  <Config Name="CMDARGS" Target="CMDARGS" Default="--listen --port 7865" Mode="" Description="Arguments passed to launch.py. Keep --listen to bind all interfaces, and --port 7865 for the WebUI." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Port" Target="7865" Default="7865" Mode="tcp" Description="Container port for the WebUI (fixed at 7865). Change the Default to map a different host port on Unraid." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="AppData" Target="/content/data" Default="/mnt/user/appdata/fooocus-cu118" Mode="rw" Description="Persistent storage for models and outputs. Back this folder up to keep your models and image history." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Checkpoints" Target="path_checkpoints" Default="/content/data/models/checkpoints/" Mode="rw" Description="Path to the Stable Diffusion checkpoints folder. Use 'Import' to seed models from the host on first start." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="LoRA" Target="path_loras" Default="/content/data/models/loras/" Mode="rw" Description="Path to the LoRA models folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Embeddings" Target="path_embeddings" Default="/content/data/models/embeddings/" Mode="rw" Description="Path to the textual-inversion embeddings folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="VAE Approx" Target="path_vae_approx" Default="/content/data/models/vae_approx/" Mode="rw" Description="Path to the VAE approximation files folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Upscale Models" Target="path_upscale_models" Default="/content/data/models/upscale_models/" Mode="rw" Description="Path to the upscaling models folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Inpaint Models" Target="path_inpaint" Default="/content/data/models/inpaint/" Mode="rw" Description="Path to the inpainting models folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="ControlNet Models" Target="path_controlnet" Default="/content/data/models/controlnet/" Mode="rw" Description="Path to the ControlNet models folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="CLIP Vision" Target="path_clip_vision" Default="/content/data/models/clip_vision/" Mode="rw" Description="Path to the CLIP vision models folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Prompt Expansion" Target="path_fooocus_expansion" Default="/content/data/models/prompt_expansion/fooocus_expansion/" Mode="rw" Description="Path to the Fooocus prompt-expansion model folder." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Outputs" Target="path_outputs" Default="/content/app/outputs/" Mode="rw" Description="Path to the generated image outputs folder (must stay under /content/app to keep history in the UI)." Type="Path" Display="advanced" Required="false" Mask="false"/>
+</Container>

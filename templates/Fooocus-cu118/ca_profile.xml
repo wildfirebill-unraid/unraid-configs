@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommunityApplications>
+  <Profile>
+    Fooocus is an open-source, offline AI image generator (based on Gradio) that rethinks image generators - prompts and images first, minimal manual tuning. It runs locally on your own NVIDIA GPU with a prebuilt Docker image, so it works on older GPU hardware - including Maxwell and newer cards - that newer images no longer support.
+
+It is offline and private (everything runs on your machine, no cloud needed), free and open source, and includes modern image generation such as inpainting, outpainting, and upscaling. Prompt expansion helps produce better results from simple text, and it requires only 4GB of Nvidia VRAM.
+
+Getting started: install via the Unraid Apps tab, open the web UI, and enter a prompt. The first launch downloads the base model, which can take a while depending on your connection.
+
+Documentation: https://github.com/wildfirebill-ai/Fooocus-cu118
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/Fooocus-cu118/icon.svg</Icon>
+  <WebPage>https://github.com/wildfirebill-unraid/unraid-configs/tree/main/templates/Fooocus-cu118</WebPage>
+</CommunityApplications>
