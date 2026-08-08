@@ -33,8 +33,18 @@ Documentation: https://github.com/wildfirebill-ai/Fooocus-cu118</Overview>
   </Networking>
   <Data>
     <Volume>
-      <HostDir>/mnt/user/appdata/fooocus-cu118</HostDir>
+      <HostDir>/mnt/user/appdata/fooocus-cu118/config</HostDir>
       <ContainerDir>/content/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/fooocus-cu118/models</HostDir>
+      <ContainerDir>/content/data/models</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/fooocus-cu118/output</HostDir>
+      <ContainerDir>/content/data/outputs</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
@@ -100,5 +110,7 @@ Documentation: https://github.com/wildfirebill-ai/Fooocus-cu118</Overview>
   <ExtraParams>--gpus all</ExtraParams>
   <PostArgs></PostArgs>
   <Config Name="Port" Target="7865" Default="7865" Mode="tcp" Description="Container port for the WebUI (fixed at 7865). Change the Default to map a different host port on Unraid." Type="Port" Display="always" Required="true" Mask="false"/>
-  <Config Name="AppData" Target="/content/data" Default="/mnt/user/appdata/fooocus-cu118" Mode="rw" Description="Persistent storage for models and outputs. Back this folder up to keep your models and image history." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Config Path" Target="/content/data" Default="/mnt/user/appdata/fooocus-cu118/config" Mode="rw" Description="Persistent storage for config.txt and config_modification_tutorial.txt." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Models Path" Target="/content/data/models" Default="/mnt/user/appdata/fooocus-cu118/models" Mode="rw" Description="Persistent storage for checkpoints, LoRAs, embeddings, and all model files." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Output Path" Target="/content/data/outputs" Default="/mnt/user/appdata/fooocus-cu118/output" Mode="rw" Description="Persistent storage for generated images. Kept separate so outputs don't bloat your models backup." Type="Path" Display="always" Required="true" Mask="false"/>
 </Container>
