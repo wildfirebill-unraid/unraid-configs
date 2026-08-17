@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>zed-docker</Name>
+  <Repository>ghcr.io/wildfirebill-unraid/zed-docker:latest</Repository>
+  <Registry>https://ghcr.io</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wildfirebill-unraid/zed-docker/issues</Support>
+  <Project>https://github.com/wildfirebill-unraid/zed-docker</Project>
+  <Overview><![CDATA[Headless <strong>Zed</strong> development environment: an SSH server plus a full Linux toolchain (git, build-essential) in a container. Install it, drop your public key into <code>appdata/zed-docker/.ssh/authorized_keys</code>, then connect from your local Zed via SSH Remote Development (<code>zed ssh://dev@[IP]:2222/home/dev/workspace</code>). Zed installs and runs its headless editor server inside the container automatically.
+<ul>
+  <li>Zed GUI stays on your machine &mdash; files, terminals, language servers, and tasks run here</li>
+  <li>Key-based SSH only, root login denied</li>
+  <li>AppData keeps your SSH keys and Zed's server install across container updates</li>
+  <li>No WebUI &mdash; SSH is the interface (port 2222)</li>
+</ul>
+Requirements: <a href="https://zed.dev">Zed v0.159+</a> on your client machine.]]></Overview>
+  <Category>Tools:Utilities</Category>
+  <WebUI></WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/zed-docker/zed-docker.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/zed-docker/icon.svg</Icon>
+  <Description>Zed Remote Development container &mdash; SSH + Linux toolchain, no GUI.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>2222</HostPort>
+        <ContainerPort>22</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/zed-docker</HostDir>
+      <ContainerDir>/home/dev</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/workspace</HostDir>
+      <ContainerDir>/home/dev/workspace</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment/>
+  <Labels/>
+  <Config Name="SSH Port" Target="22" Default="2222" Mode="tcp" Description="Host port Zed connects to. Change to anything free (e.g. 2222 is standard here)." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="AppData" Target="/home/dev" Default="/mnt/user/appdata/zed-docker" Mode="rw" Description="Persistent home directory. Put your public key at .ssh/authorized_keys inside this folder." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Workspace" Target="/home/dev/workspace" Default="/mnt/user/workspace" Mode="rw" Description="Project folder you open in Zed. Create it on the array or cache first." Type="Path" Display="always" Required="true" Mask="false"/>
+</Container>
