@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>zed-docker</Name>
-  <Repository>ghcr.io/wildfirebill-unraid/zed-docker:latest</Repository>
+  <Repository>ghcr.io/wildfirebill-ai/zed-docker:latest</Repository>
   <Registry>https://ghcr.io</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/wildfirebill-unraid/zed-docker/issues</Support>
-  <Project>https://github.com/wildfirebill-unraid/zed-docker</Project>
+  <Support>https://github.com/wildfirebill-ai/zed-docker/issues</Support>
+  <Project>https://github.com/wildfirebill-ai/zed-docker</Project>
   <Overview><![CDATA[Headless <strong>Zed</strong> development environment: an SSH server plus a full Linux toolchain (git, build-essential) in a container. Install it, drop your public key into <code>appdata/zed-docker/.ssh/authorized_keys</code>, then connect from your local Zed via SSH Remote Development (<code>zed ssh://dev@[IP]:2222/home/dev/workspace</code>). Zed installs and runs its headless editor server inside the container automatically.
 <ul>
   <li>Zed GUI stays on your machine &mdash; files, terminals, language servers, and tasks run here</li>
