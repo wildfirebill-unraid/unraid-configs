@@ -9,12 +9,12 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/wfb-holding/hcm/issues</Support>
   <Project>https://github.com/wfb-holding/hcm</Project>
-  <Overview><![CDATA[Enterprise Human Capital Management (HCM) platform for 10,000+ employees - a self-hosted alternative in the class of Workday / BambooHR / SAP SuccessFactors.
+  <Overview>Enterprise Human Capital Management (HCM) platform for 10,000+ employees - a self-hosted alternative in the class of Workday / BambooHR / SAP SuccessFactors.
 
 Features:
 - Core HR, employee self-service, real-time org charts
-- Time & attendance (timeclock punches, shift scheduling incl. 12h 2-2-3 crews, leave/absence)
-- Payroll + tax, recruiting/ATS, performance/360, LMS with Coursera-style course content, benefits, surveys & AI assistant
+- Time &amp; attendance (timeclock punches, shift scheduling incl. 12h 2-2-3 crews, leave/absence)
+- Payroll + tax, recruiting/ATS, performance/360, LMS with Coursera-style course content, benefits, surveys &amp; AI assistant
 - A universal import engine to onboard data from other HCM vendors
 - Argon2id password hashing + per-session TOTP MFA, row-level audit/compliance
 - REST API with scoped bearer tokens
@@ -22,7 +22,7 @@ Features:
 
 Requires PostgreSQL 16. Install a Postgres container and point the DB Host and DB Password fields at it with matching credentials. On a shared docker network use the container name; on bridge use its IP. Create your admin account and seed reference data (org, shifts, job titles) after first login.
 
-For more information: https://github.com/wfb-holding/hcm]]></Overview>
+For more information: https://github.com/wfb-holding/hcm</Overview>
   <Category>Productivity</Category>
   <WebUI>http://[IP]:[PORT:8000]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/HCM/HCM.xml</TemplateURL>
