@@ -19,7 +19,7 @@
   <li>REST API with scoped bearer tokens</li>
   <li>Multi-language: EN / ES / DE / FR / ZH</li>
 </ul>
-<strong>Requires PostgreSQL 16.</strong> Install a Postgres container (e.g. the Postgres template) and point <code>POSTGRES_HOST</code> at it with matching credentials. On a shared docker network use the container name; on bridge use its IP. First-run: open the web UI, log in, then create your admin from the container console (<code>docker exec -it HCM python manage.py createsuperuser</code>) and seed reference data (<code>python manage.py seed_dev seed_shifts seed_positions</code> to jump-start org, shifts, and job titles).
+<strong>Requires PostgreSQL 16.</strong> Install a Postgres container and point the DB Host and DB Password fields at it with matching credentials. On a shared docker network use the container name; on bridge use its IP. Create your admin account and seed reference data (org, shifts, job titles) after first login.
 <ul>
   <li><a href="https://github.com/wfb-holding/hcm">GitHub repo</a></li>
 </ul>]]></Overview>
@@ -27,7 +27,6 @@
   <WebUI>http://[IP]:[PORT:8000]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/HCM/HCM.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/HCM/icon.svg</Icon>
-  <Description>Enterprise Human Capital Management (HCM) - core HR, attendance, payroll, recruiting, talent, benefits, LMS. Requires Postgres 16.</Description>
   <Networking>
     <Mode>bridge</Mode>
     <Publish>
