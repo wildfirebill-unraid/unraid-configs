@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommunityApplications>
+  <Profile>Enterprise Human Capital Management (HCM) platform - core HR, attendance (timeclock + shift scheduling), payroll + tax, recruiting/ATS, performance &amp; LMS with Coursera-style courses, benefits, surveys, AI assistant, import engine, MFA + audit. Requires PostgreSQL 16.</Profile>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/HCM/icon.svg</Icon>
+  <WebPage>https://github.com/wildfirebill-unraid/unraid-configs/tree/main/templates/HCM</WebPage>
+</CommunityApplications>

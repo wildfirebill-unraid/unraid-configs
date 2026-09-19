@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>HCM</Name>
+  <Repository>ghcr.io/wfb-holding/hcm:latest</Repository>
+  <Registry>https://ghcr.io</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/wfb-holding/hcm/issues</Support>
+  <Project>https://github.com/wfb-holding/hcm</Project>
+  <Overview><![CDATA[Enterprise <strong>Human Capital Management (HCM)</strong> platform for 10,000+ employees &mdash; a self-hosted alternative in the class of Workday / BambooHR / SAP SuccessFactors.
+<ul>
+  <li>Core HR, employee self-service, real-time org charts</li>
+  <li>Time &amp; attendance (timeclock punches, shift scheduling incl. 12h 2-2-3 crews, leave/absence)</li>
+  <li>Payroll + tax, recruiting/ATS, performance/360, LMS with Coursera-style course content, benefits, surveys &amp; AI assistant</li>
+  <li>A universal import engine to onboard data from other HCM vendors</li>
+  <li>Argon2id password hashing + per-session TOTP MFA, row-level audit/compliance</li>
+  <li>REST API with scoped bearer tokens</li>
+  <li>Multi-language: EN / ES / DE / FR / ZH</li>
+</ul>
+<strong>Requires PostgreSQL 16.</strong> Install a Postgres container (e.g. the Postgres template) and point <code>POSTGRES_HOST</code> at it with matching credentials. On a shared docker network use the container name; on bridge use its IP. First-run: open the web UI, log in, then create your admin from the container console (<code>docker exec -it HCM python manage.py createsuperuser</code>) and seed reference data (<code>python manage.py seed_dev seed_shifts seed_positions</code> to jump-start org, shifts, and job titles).
+<ul>
+  <li><a href="https://github.com/wfb-holding/hcm">GitHub repo</a></li>
+</ul>]]></Overview>
+  <Category>Productivity</Category>
+  <WebUI>http://[IP]:[PORT:8000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/HCM/HCM.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/HCM/icon.svg</Icon>
+  <Description>Enterprise Human Capital Management (HCM) - core HR, attendance, payroll, recruiting, talent, benefits, LMS. Requires Postgres 16.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>8000</HostPort>
+        <ContainerPort>8000</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/hcm/media</HostDir>
+      <ContainerDir>/app/media</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/hcm/staticfiles</HostDir>
+      <ContainerDir>/app/staticfiles</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment/>
+  <Labels/>
+  <Config Name="WebUI Port" Target="8000" Default="8000" Mode="tcp" Description="Host port for the HCM web UI." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="Media" Target="/app/media" Default="/mnt/user/appdata/hcm/media" Mode="rw" Description="Persistent storage for uploaded documents and media." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Static files" Target="/app/staticfiles" Default="/mnt/user/appdata/hcm/staticfiles" Mode="rw" Description="Persistent Django static files." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="DB Host" Target="POSTGRES_HOST" Default="postgres" Mode="always" Description="Hostname/IP of your PostgreSQL 16 container. On a shared network use the container name; on bridge use its IP." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="DB Port" Target="POSTGRES_PORT" Default="5432" Mode="always" Description="PostgreSQL port." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="DB Name" Target="POSTGRES_DB" Default="hcm" Mode="always" Description="PostgreSQL database name." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="DB User" Target="POSTGRES_USER" Default="hcm" Mode="always" Description="PostgreSQL user." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="DB Password" Target="POSTGRES_PASSWORD" Default="" Mode="always" Description="PostgreSQL password (must match your DB container)." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Django Secret Key" Target="DJANGO_SECRET_KEY" Default="" Mode="always" Description="Django SECRET_KEY - use a long random string and keep it stable." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Debug" Target="DJANGO_DEBUG" Default="false" Mode="always" Description="Set to false in production (never true on the LAN-facing container)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Allowed Hosts" Target="DJANGO_ALLOWED_HOSTS" Default="tower,127.0.0.1,localhost" Mode="always" Description="Comma-separated hostnames/IPs (your Unraid host + LAN IP/domain) Django will serve." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Timezone" Target="DJANGO_TIME_ZONE" Default="America/New_York" Mode="always" Description="Application timezone (IANA name)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="MFA Encryption Key" Target="HCM_MFA_ENCRYPTION_KEY" Default="" Mode="always" Description="Fernet key used to encrypt TOTP secrets at rest (44-char urlsafe-base64). Generate with: python -c &quot;from cryptography.fernet import Fernet;print(Fernet.generate_key().decode())&quot;" Type="Variable" Display="advanced" Required="false" Mask="true"/>
+</Container>
