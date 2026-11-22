@@ -10,7 +10,7 @@
   <Support>https://github.com/wildfirebill-arrrs/uploadrr/issues</Support>
   <Project>https://github.com/wildfirebill-arrrs/uploadrr_unraid</Project>
   <Overview>Uploadrr prepares and uploads torrents for Movies, TV, Music, and Adult content to 50+ private trackers. CLI tool - exec into the container to run commands.</Overview>
-  <Description>Uploadrr automates metadata gathering, screenshot generation, torrent creation, and uploading to private trackers. This container stays running (tail) so you can exec into it via the Unraid console or docker exec and run: python3 /app/upload.py /data/path/to/media --trackers BLU HDB. Configure /app/data/config.yaml first.</Description>
+  <Description>Uploadrr automates metadata gathering, screenshot generation, torrent creation, and uploading to private trackers. This container stays running (tail) so you can exec into it via the Unraid console or docker exec and run: python3 /app/upload.py /data/path/to/media --trackers BLU HDB. Configure /app/data/config.yaml first. SEEDBOX: rclone + fuse3 are preinstalled. To mount a seedbox, exec into the container and run: rclone config (one-time), then rclone mount remote:path /seedbox --daemon --vfs-cache-mode writes. Then pass --full-auto /seedbox to uploadrr. Or mount the seedbox on the Unraid host and map it as an extra volume to /seedbox.</Description>
   <Category>Tools:Utilities</Category>
   <WebUI></WebUI>
   <TemplateURL>https://raw.githubusercontent.com/wildfirebill-unraid/unraid-configs/main/templates/uploadrr.xml</TemplateURL>
@@ -27,6 +27,7 @@
   <Config Name="Config (data)" Target="/app/data" Default="/mnt/user/appdata/uploadrr/data" Mode="rw" Description="Persistent config (config.yaml) and metadata." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/uploadrr/data</Config>
   <Config Name="Temp" Target="/app/tmp" Default="/mnt/user/appdata/uploadrr/tmp" Mode="rw" Description="Temporary/working files." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/uploadrr/tmp</Config>
   <Config Name="Media" Target="/data" Default="/mnt/user/data/torrents" Mode="rw" Description="Media to upload (map to your download client's path)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/data/torrents</Config>
+  <Config Name="Seedbox" Target="/seedbox" Default="/mnt/user/seedbox" Mode="rw" Description="Optional seedbox mount point. Mount via rclone on host or exec into container and run rclone mount. Leave empty if unused." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/seedbox</Config>
   <Config Name="Torrent Storage" Target="/torrent_storage_dir" Default="/mnt/user/appdata/qbittorrent/data/BT_backup" Mode="rw" Description="Client BT_backup for torrent reuse (optional)." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/qbittorrent/data/BT_backup</Config>
   <Config Name="PUID" Target="PUID" Default="99" Description="User ID to run as (Unraid nobody=99)." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Description="Group ID to run as (Unraid users=100)." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
