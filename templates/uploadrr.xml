@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
-  <Name>Uploadrr</Name>
-  <Repository>ghcr.io/wildfirebill-arrrs/uploadrr:latest</Repository>
-  <Registry>https://ghcr.io/wildfirebill-arrrs/uploadrr</Registry>
+  <Name>Uploadrr_Unraid</Name>
+  <Repository>ghcr.io/wildfirebill-arrrs/uploadrr_unraid:latest</Repository>
+  <Registry>https://ghcr.io/wildfirebill-arrrs/uploadrr_unraid</Registry>
   <Network>bridge</Network>
   <MyIP></MyIP>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/wildfirebill-arrrs/uploadrr/issues</Support>
-  <Project>https://github.com/wildfirebill-arrrs/uploadrr</Project>
+  <Project>https://github.com/wildfirebill-arrrs/uploadrr_unraid</Project>
   <Overview>Uploadrr prepares and uploads torrents for Movies, TV, Music, and Adult content to 50+ private trackers. CLI tool - exec into the container to run commands.</Overview>
   <Description>Uploadrr automates metadata gathering, screenshot generation, torrent creation, and uploading to private trackers. This container stays running (tail) so you can exec into it via the Unraid console or docker exec and run: python3 /app/upload.py /data/path/to/media --trackers BLU HDB. Configure /app/data/config.yaml first.</Description>
   <Category>Tools:Utilities</Category>
